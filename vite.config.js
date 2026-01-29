@@ -6,16 +6,16 @@ export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: [['react()']],
-        base: '/react-map/',
+        plugins: [['babel-plugin-react-compiler']],
       },
     })],
+  base: '/react-map/',
   server: {
     proxy: {
-      '/api-map': {
+      '/react-map': {
         target: 'https://nominatim.openstreetmap.org',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-map/, ''),
+        rewrite: (path) => path.replace(/^\/react-map/, ''),
         headers: {
           'User-Agent': 'Map-Student-Project',
           'Accept-Language': 'pl'

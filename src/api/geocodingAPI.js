@@ -1,6 +1,6 @@
 export const getAddressFromAPI = async (lat, lng) => {
   try {
-    const url = `/api-map/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+    const url = `/react-map/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Problem z połączeniem do nominatim');
