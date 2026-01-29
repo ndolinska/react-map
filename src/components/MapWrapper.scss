@@ -1,0 +1,138 @@
+@use '../_variables' as *;
+
+// Główny kontener
+.map-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  .leaflet-container-custom {
+    height: 100%;
+    width: 100%;
+    background-color: $bg-body; 
+    z-index: 1;
+  }
+  .route-overlay-panel {
+    position: absolute;
+    bottom: 20px;      
+    left: 40%;
+    z-index: 1000;     
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    @include card-shadow;
+    @include flex-center;
+    gap: 15px;
+    min-width: 250px;
+    .route-details {
+      display: flex;
+      flex-direction: column;
+      
+      .route-label { font-size: 12px; color: #666; }
+      .route-dist { font-weight: bold; font-size: 18px; color: #333; }
+    }
+  }
+}
+// STYLIZACJA POPUPÓW LEAFLET 
+.custom-popup {
+  // Wrapper treści
+  .leaflet-popup-content-wrapper {
+    padding:10px;
+    @include card-style;
+    border-radius: 8px;
+  }
+  // Strzałka (tip) pod dymkiem
+  .leaflet-popup-tip {
+    background-color: $bg-component;
+    box-shadow: none;
+  }
+}
+.route-popup-content{
+  padding:10px;
+  text-align: center;
+}
+// STYLIZACJA ZAWARTOŚCI POPUPA 
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: scroll;
+  gap: 3px;
+  padding-right: 20px;
+  @include custom-scrollbar($thumb-bg:$text-muted);
+
+  // Nagłówek (Tytuł + Ocena)
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+
+    .point-title {
+      font-size: 1rem;
+      color: $text-primary;
+    }
+    .like-btn{
+      font-size: 1rem;
+      background:$text-primary;
+      border:$text-muted;
+      border-radius:3px;
+      &:active {
+      transform: scale(0.98) translateY(1px);
+  }
+    }
+
+    .rating-badge {
+      background: rgba($stars, 0.2);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      border: 1px solid rgba($stars, 0.3);
+      white-space: nowrap;
+    }
+  }
+
+  // Typ punktu
+  .point-type {
+    color: $text-muted;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  // Opis
+  .point-description {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  .point-image {
+    width: 90%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid $border-color;
+    margin-top: 4px;
+  }
+}
+  .btn {
+    @include btn-base;
+  
+  &.nav{
+    background-color: $accent;
+  }
+  &.edit {
+    background-color: $warning;
+    color: black;
+  }
+  &.del {
+    background-color: $danger;
+  }}
+  .reviews-section {
+    margin-top: 5px;
+    border-top: 1px solid rgba($border-color, 0.5);
+    padding-top: 3px;
+  }

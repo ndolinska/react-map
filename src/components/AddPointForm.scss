@@ -1,0 +1,131 @@
+@use '../_variables' as *;
+.add-point-overlay {
+  position: fixed;
+  inset: 0; 
+  z-index: 1000;
+  @include flex-center; 
+  @include overlay-backdrop;
+}
+
+.add-point-card {
+  @include card-style; 
+  width: 350px;
+  max-width: 90%;
+  padding: 24px;
+  animation: slideUp 0.3s ease-out;
+
+  .form-header {
+    margin-bottom: 20px;
+    text-align: center;
+
+    h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.25rem;
+    }
+
+    .coords-badge {
+      display: inline-block;
+      background-color: $bg-body;
+      color: $text-muted;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      border: 1px solid $border-color;
+    }
+  }
+
+  .loading-text {
+    text-align: center;
+    color: $text-muted;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 80vh;
+    overflow-y: auto;
+    @include custom-scrollbar;
+    input[type="text"],
+    textarea,
+    select {
+      @include input-base;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    .file-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .file-label {
+        @include input-base; 
+        text-align: center;
+        cursor: pointer;
+        border-style: dashed; 
+        color: $text-muted;
+        
+        &:hover {
+          color: $accent;
+          border-color: $accent;
+        }
+
+        input {
+          display: none;
+        }
+      }
+
+      .image-preview {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid $border-color;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+
+      .btn {
+        flex: 1;
+        &.save {
+          @include btn-base;
+        }
+        &.cancel {
+          @include btn-base(
+            $btn-color: $danger, 
+          );
+          border: 1px solid $border-color;
+
+          &:hover {
+            border-color: $text-muted;
+            color: $text-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

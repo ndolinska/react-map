@@ -1,0 +1,218 @@
+@use '../_variables' as *;
+.sidebar-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 2000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: $bg-component; 
+  padding: 5px 10px;
+  border-radius: 30px;
+  border: 1px solid $border-color;
+  @include card-shadow;
+  @include transition-standard(transform);
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  .toggle-points {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: $text-primary;
+  }
+
+  .toggle-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: $bg-body;
+    @include flex-center;
+    border-width: 2px;
+    border-style: solid;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-placeholder-icon {
+      font-size: 1rem;
+    }
+  }
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2001;
+  animation: fadeIn 0.2s ease-out;
+  @include overlay-backdrop(2px);
+}
+
+.sidebar-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: $sidebar-width;
+  height: 100%;
+  background-color: $bg-component;
+  z-index: 2002;
+  padding: 20px;
+  @include card-shadow;
+  display: flex;
+  flex-direction: column;
+  color: $text-primary;
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+  // Przycisk zamknięcia "X"
+  .btn-close {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $text-muted;
+    transition: color 0.2s;
+    &:hover {
+      color: $danger;
+    }
+  }
+
+  // Sekcja Profilu
+  .profile-section {
+    text-align: center;
+    margin: 20px 0;
+
+    .avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .avatar-container {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+      background-color: $bg-body;
+      border-width: 4px;
+      border-style: solid;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .avatar-placeholder-large {
+        line-height: 92px; 
+        font-size: 3rem;
+      }
+    }
+
+    .upload-icon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: $accent;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+      border: 3px solid $bg-component; 
+      transition: background-color 0.2s;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: $accent-hover;
+      }
+
+      input {
+        display: none;
+      }
+    }
+
+    h2 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      color: $text-primary;
+    }
+
+    .rank-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  }
+
+  // Karta statystyk
+  .stats-card {
+    background-color: $bg-body; 
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    margin-top: 10px;
+
+    .stats-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+
+      strong {
+        color: $accent;
+      }
+
+      .next-rank-info {
+        color: $text-muted;
+        font-size: 0.8rem;
+      }
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 6px;
+      color: $text-muted;
+    }
+  }
+}
+.btn-logout{
+  margin-top:10px;
+  @include btn-base($btn-color:$danger)
+}
+
+// Animacje
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

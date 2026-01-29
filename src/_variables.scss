@@ -1,0 +1,110 @@
+//Główne kolory strony
+$bg-body:       #0f172a;  
+$bg-component:  #1e293b;  
+$border-color:  #334155;  
+
+// Tekst
+$text-primary:  #f1f5f9; 
+$text-muted:    #94a3b8; 
+
+// Akcenty
+$accent:        #6366f1; 
+$accent-hover:  #4f46e5;
+$danger:        #ef4444;
+$warning:       #ffc107;
+$success:       #10b981; 
+$stars:       #eab308;
+
+// Wymiary
+$nav-height:    64px;
+$sidebar-width: 280px;
+
+// Cienie pod karty
+@mixin card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+// Pola do inputu
+@mixin input-base {
+  width: 100%;
+  padding: 0.75rem 1rem; 
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  background-color: $bg-body;
+  color: $text-primary;
+  font-size: 1rem;
+  outline: none;
+  @include transition-standard;
+  &:focus {
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba($accent, 0.2);
+  }
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+// Przyciski
+@mixin btn-base($padding: 0.5rem 1rem, $radius: 6px, $btn-color:$accent, $text-color:$text-primary) {
+  padding: $padding;
+  border-radius: $radius;
+  color: $text-color;
+  background-color: $btn-color;
+  font-weight: 500;
+  cursor: pointer;
+  @include transition-standard;
+  border: 1px solid transparent; 
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &:active {
+    transform: scale(0.98) translateY(1px);
+  }
+  &:hover {
+      filter: brightness(90%);
+    }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none; 
+  }
+}
+//Scrollbar
+@mixin custom-scrollbar($width: 6px, $track-bg: transparent, $thumb-bg: $border-color) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track-bg;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-bg;
+    border-radius: 10px;
+    
+  }
+}
+//Containery
+@mixin card-style {
+  background-color: $bg-component;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  @include card-shadow; 
+  color: $text-primary;
+}
+//Wyśrodkowanie
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+//Wymazanie tła
+@mixin overlay-backdrop($blur: 4px) {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur($blur);
+}
+//Animacja
+@mixin transition-standard($prop: all) {
+  transition: $prop 0.2s ease;
+}

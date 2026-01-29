@@ -1,0 +1,119 @@
+
+@use '../_variables' as *;
+
+// Główny kontener
+.mp-container {
+  position: relative;
+  height: 82vh;
+  background-color: $bg-body;
+  color: $text-primary;
+  overflow: hidden;
+}
+
+// --- Wspólne style przycisków ---
+.mp-btn {
+  @include btn-base($padding: 0.7rem 1.2rem)
+}
+
+.mp-toolbar {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  z-index: 1000;
+  display: flex;
+  gap: 12px;
+}
+
+.mp-filter-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  @include card-style;
+  padding: 20px;
+  @include card-shadow;
+  width: 280px;
+  max-height: 70vh;
+  overflow-y: scroll;
+
+  @include custom-scrollbar($thumb-bg:$text-primary);
+
+  #mp-search-input {
+    @include input-base
+  }
+
+  h4 {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $text-muted;
+  }
+  .mp-layer-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: $text-primary;
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      accent-color: $accent;
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  .mp-divider {
+    border: 0;
+    border-top: 1px solid $border-color;
+    margin: 15px 0;
+  }
+
+  #mp-range-input {
+    width: 100%;
+    cursor: pointer;
+    accent-color: $accent;
+  }
+
+  .mp-results-count {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    text-align: right;
+    color: $text-muted;
+  }
+  .mp-sidebar-list {
+      flex: 1;
+      overflow-y: hidden;
+      padding: 0.5rem;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      .mp-list-item {
+        background: rgba($bg-body, 0.6);
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+        border: 1px solid $border-color;
+        cursor: pointer;
+        @include transition-standard;
+        border-left: 4px solid transparent;
+
+        &:hover {
+          background: $bg-component;
+          border-color: $accent;
+          border-left-color: $accent;
+        }
+
+        &__title {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 600;
+          color: $text-primary;
+        }}}
+}
+

@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif; 
+  background-color: $bg-body;
+  color: $text-primary;
+}
+
+
+.app-layout {
+  min-height: 100vh;
+}
+nav {
+  min-height:10vh;
+  background-color: $bg-component;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $text-primary;
+  }
+
+  .navigation {
+    a {
+      text-decoration: none;
+      color: $text-muted;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s ease; 
+      margin-right: 7rem;
+
+      &:hover {
+        color: $text-primary;
+      }
+    }
+  }
+}
+
+main {
+  padding: 2rem;}

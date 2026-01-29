@@ -1,0 +1,90 @@
+
+@use '../_variables' as *;
+
+.reviews-container {
+  margin-top: 10px;
+  border-top: 1px solid rgba($border-color, 0.5);
+  padding-top: 10px;
+  color: $text-primary;
+
+  .reviews-title {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: $text-primary;
+  }
+}
+
+.reviews-list {
+  margin-bottom: 12px;
+  .no-reviews {
+    font-size: 0.8rem;
+    color: $text-muted;
+    font-style: italic;
+  }
+}
+
+.review-item {
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba($border-color, 0.5);
+  padding-bottom: 6px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+
+    .stars {
+      color: $warning;
+      font-weight: bold;
+    }
+  }
+
+  .review-text {
+    font-size: 0.85rem;
+    word-wrap: break-word;
+  }
+}
+
+.review-form {
+  background: rgba($bg-body, 0.5); 
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid $border-color;
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    
+    span {
+      font-size: 0.8rem;
+      color: $text-muted;
+    }
+  }
+
+  #review-input {
+   @include input-base
+  }
+
+  .btn-submit {
+   @include btn-base;
+   width:100%;
+
+    &:hover {
+      background-color: $success;
+    }
+  }
+}
+.login-alert {
+  font-size: 0.8rem;
+  text-align: center;
+  color: $danger;
+  margin-top: 5px;
+  font-weight: 500;
+}
