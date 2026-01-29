@@ -1,4 +1,4 @@
-import { BrowserRouter, Link } from 'react-router-dom';
+import { HashRouter, Link } from 'react-router-dom';
 import AppRouter from './router/AppRouter';
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <HashRouter>
         <AuthProvider>
           <DataProvider>
             <div className="app-layout">
@@ -33,7 +33,7 @@ function App() {
             </div>
           </DataProvider>
         </AuthProvider>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
     );
 }
