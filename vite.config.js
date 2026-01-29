@@ -12,10 +12,10 @@ export default defineConfig({
   base: '/react-map/',
   server: {
     proxy: {
-      '/react-map': {
+      '/api-map': {
         target: 'https://nominatim.openstreetmap.org',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/react-map/, ''),
+        rewrite: (path) => path.replace(/^\/api-map/, ''),
         headers: {
           'User-Agent': 'Map-Student-Project',
           'Accept-Language': 'pl'
